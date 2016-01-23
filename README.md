@@ -30,7 +30,7 @@ $ giff hoge.js
 
 ## Thanks
 
-https://github.com/rtfpessoa/diff2html by [https://github.com/rtfpessoa](rtfpessoa)
+https://github.com/rtfpessoa/diff2html by [rtfpessoa](https://github.com/rtfpessoa)
 
 ## MIT LICENSE
 
