@@ -1,7 +1,7 @@
 {
   "name": "giff",
   "version": "0.0.1",
-  "description": "",
+  "description": "display git diff on browser",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
