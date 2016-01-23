@@ -12,9 +12,12 @@ let path    = require('path'),
 // set program info
 program.version('0.0.1').usage('[options] [<commit>] [--] [<path>...]').parse(process.argv);
 
-var giff = spawn('git', ['diff'].concat(program.args));
-
+// init output file
 let realPath = path.dirname(fs.realpathSync(__filename));
+let outputJsText = 'var lineDiffExample="";';
+fs.writeFileSync(`${realPath}/dest/diff.js`, outputJsText);
+
+var giff = spawn('git', ['diff'].concat(program.args));
 giff.stdout.on('data', function (data) {
   // git diff result encode to base64
   let base64Diff = data.toString('Base64');
