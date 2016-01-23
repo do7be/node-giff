@@ -17,7 +17,7 @@ var giff = spawn('git', ['diff'].concat(program.args));
 let realPath = path.dirname(fs.realpathSync(__filename));
 giff.stdout.on('data', function (data) {
   // git diff result encode to base64
-  let base64Diff = new Buffer(data).toString('Base64');
+  let base64Diff = data.toString('Base64');
   let outputJsText = 'var lineDiffExample=window.atob("' + base64Diff + '");';
   fs.writeFileSync(`${realPath}/dest/diff.js`, outputJsText);
 });
