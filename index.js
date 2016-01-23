@@ -14,14 +14,12 @@ program.version('0.0.1').usage('[options] [<commit>] [--] [<path>...]').parse(pr
 
 var giff = spawn('git', ['diff'].concat(program.args));
 
+let realPath = path.dirname(fs.realpathSync(__filename));
 giff.stdout.on('data', function (data) {
   // git diff result encode to base64
-  let realPath = path.dirname(fs.realpathSync(__filename));
   let base64Diff = new Buffer(data).toString('Base64');
   let outputJsText = 'var lineDiffExample=window.atob("' + base64Diff + '");';
-  fs.writeFile(`${realPath}/dest/diff.js`, outputJsText, function (err) {
-    exec(`open ${realPath}/index.html`);
-  });
+  fs.writeFileSync(`${realPath}/dest/diff.js`, outputJsText);
 });
 
 giff.stderr.on('data', function (data) {
@@ -30,3 +28,6 @@ giff.stderr.on('data', function (data) {
 
 giff.on('exit', function (code) {
 });
+
+console.log(`${realPath}/index.html`);
+exec(`which open && open ${realPath}/index.html`);
