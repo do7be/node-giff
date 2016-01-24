@@ -9,7 +9,13 @@ $ npm install -g
 ## Usage
 
 ```
-$ giff
+Usage: giff [options] [<commit>] [--] [<path>...]
+
+Options:
+
+  -h, --help     output usage information
+  -V, --version  output the version number
+  --cached       show diff of staging files
 ```
 
 Open your browser and show result of "git diff".
