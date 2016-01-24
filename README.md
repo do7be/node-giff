@@ -1,6 +1,6 @@
 # giff
 
-## Instalation
+## Installation
 
 ```
 $ npm install -g
