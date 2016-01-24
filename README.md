@@ -1,16 +1,9 @@
 # giff
 
-## TODO
-
-npm publish
-
 ## Instalation
 
 ```
-$ git clone https://github.com/do7be/giff.git
-$ cd giff
-$ npm install
-$ npm link
+$ npm install -g
 ```
 
 ## Usage
