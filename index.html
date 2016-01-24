@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
     <link rel="stylesheet" type="text/css" href="./lib/style.css">
 
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/languages/scala.min.js"></script>
     <script src="./dest/diff.js"></script>
@@ -14,16 +15,38 @@
 <body style="text-align: center; font-family: 'Source Sans Pro',sans-serif;">
 <h1>Git Diff Result by giff</h1>
 
-<h2 class="heading">Line by Line</h2>
+<section class="btn-area clearfix">
+  <div class="btn-group">
+    <span class="btn-sw selected">
+      Unified
+    </span>
+    <span class="btn-sw">
+      Split
+    </span>
+  </div>
+</section>
 
-<div id="line-by-line" style="margin: 0 auto; max-width: 900px;">
-</div>
+<section class="diff line">
+  <h2 class="heading">Line by Line</h2>
 
-<h2 class="heading">Side by Side</h2>
+  <div id="line-by-line" style="margin: 0 auto; max-width: 900px;">
+  </div>
+</section>
+<section class="diff side">
+  <h2 class="heading">Side by Side</h2>
 
-<div id="side-by-side" style="margin: 0 auto;">
-</div>
+  <div id="side-by-side" style="margin: 0 auto;">
+  </div>
+</section>
 
 <a href="https://github.com/giff">https://github.com/giff</a>
+
+<script>
+  $('.btn-group').on('click', '.btn-sw:not(.selected)', function(){
+      $('.btn-sw').toggleClass('selected');
+      $('.diff').toggle();
+  });
+</script>
+
 </body>
 </html>
