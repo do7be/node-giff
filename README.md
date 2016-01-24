@@ -1,9 +1,9 @@
-# giff
+# node-giff
 
 ## Installation
 
 ```
-$ npm install -g giff
+$ npm install -g node-giff
 ```
 
 ## Usage
