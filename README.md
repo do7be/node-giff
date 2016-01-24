@@ -3,7 +3,7 @@
 ## Installation
 
 ```
-$ npm install -g
+$ npm install -g giff
 ```
 
 ## Usage
