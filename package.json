@@ -1,5 +1,5 @@
 {
-  "name": "giff",
+  "name": "node-giff",
   "version": "0.0.1",
   "description": "display git diff on browser",
   "main": "index.js",
