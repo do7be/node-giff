@@ -1,5 +1,7 @@
 # node-giff
 
+![ScreenShot](https://raw.github.com/wiki/do7be/node-giff/b94017b1ae5837074246e3bd99aab624.gif)
+
 ## Installation
 
 ```
