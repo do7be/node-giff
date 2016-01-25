@@ -1,13 +1,17 @@
 {
   "name": "node-giff",
-  "version": "0.0.2",
-  "description": "display git diff on browser",
+  "version": "0.0.3",
+  "description": "show git diff on browser",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
     "giff": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/do7be/node-giff.git"
   },
   "author": "do7be",
   "license": "MIT",
