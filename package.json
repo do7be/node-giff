@@ -1,6 +1,6 @@
 {
   "name": "node-giff",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "show git diff on browser",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,7 @@
   "author": "do7be",
   "license": "MIT",
   "dependencies": {
+    "commander": "^2.9.0",
     "diff2html": "^1.2.0"
   },
   "devDependencies": {

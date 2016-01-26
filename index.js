@@ -11,7 +11,7 @@ let path    = require('path'),
 
 // set program info
 program
-  .version('0.0.3')
+  .version('0.0.4')
   .usage('[options] [<commit>] [--] [<path>...]')
   .option('--cached', 'show diff of staging files')
   .parse(process.argv);
