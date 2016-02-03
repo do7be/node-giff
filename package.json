@@ -1,6 +1,6 @@
 {
   "name": "node-giff",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "show git diff on browser",
   "main": "index.js",
   "scripts": {
