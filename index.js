@@ -26,8 +26,8 @@ if (program.cached) {
 
 // init output file
 const realPath = fs.realpathSync(__dirname);
-const outputFd = fs.openSync(`${realPath}/dest/diff.js`, 'w');
-fs.writeSync(outputFd, 'var lineDiffExample="');
+const output = fs.createWriteStream(`${realPath}/dest/diff.js`)
+output.write('var lineDiffExample="');
 
 // git diff
 const giff = spawn('git', ['diff'].concat(program.args).concat(options));
@@ -36,7 +36,7 @@ giff.stdout.on('data', function (data) {
   const encoded = JSON.stringify(data.toString());
   // extract the encoded string's contents
   const contents = encoded.slice(1, -1);
-  fs.writeSync(outputFd, contents);
+  output.write(contents);
 });
 
 giff.stderr.on('data', function (data) {
@@ -44,9 +44,8 @@ giff.stderr.on('data', function (data) {
 });
 
 giff.on('exit', function (code) {
-  fs.writeSync(outputFd, '";');
-  fs.closeSync(outputFd);
-
-  console.log(`${realPath}/index.html`);
-  exec(`which open && open ${realPath}/index.html`);
+  output.end('";', function () {
+    console.log(`${realPath}/index.html`);
+    exec(`which open && open ${realPath}/index.html`);
+  });
 });
