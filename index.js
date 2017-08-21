@@ -1,13 +1,15 @@
 #!/usr/bin/env node
+// @ts-check
 
 'use strict';
 
-let path    = require('path'),
-    fs      = require('fs'),
-    util    = require('util'),
-    spawn   = require('child_process').spawn,
-    exec    = require('child_process').exec,
-    program = require('commander');
+const
+  path    = require('path'),
+  fs      = require('fs'),
+  util    = require('util'),
+  spawn   = require('child_process').spawn,
+  exec    = require('child_process').exec,
+  program = require('commander');
 
 // set program info
 program
@@ -17,21 +19,24 @@ program
   .parse(process.argv);
 
 // judge options
-let options=[];
+const options = ['--patience'];
 if (program.cached) {
   options.push('--cached');
 }
 
 // init output file
-let realPath = path.dirname(fs.realpathSync(__filename));
-outputJs(realPath, '');
+const realPath = fs.realpathSync(__dirname);
+const output = fs.createWriteStream(`${realPath}/dest/diff.js`)
+output.write('var lineDiffExample="');
 
 // git diff
-var giff = spawn('git', ['diff'].concat(program.args).concat(options));
+const giff = spawn('git', ['diff'].concat(program.args).concat(options));
 giff.stdout.on('data', function (data) {
-  // git diff result encode to base64
-  let base64Diff = data.toString('Base64');
-  outputJs(realPath, base64Diff);
+  // encode to JSON to get escaping
+  const encoded = JSON.stringify(data.toString());
+  // extract the encoded string's contents
+  const contents = encoded.slice(1, -1);
+  output.write(contents);
 });
 
 giff.stderr.on('data', function (data) {
@@ -39,12 +44,8 @@ giff.stderr.on('data', function (data) {
 });
 
 giff.on('exit', function (code) {
+  output.end('";', function () {
+    console.log(`${realPath}/index.html`);
+    exec(`which open && open ${realPath}/index.html`);
+  });
 });
-
-console.log(`${realPath}/index.html`);
-exec(`which open && open ${realPath}/index.html`);
-
-function outputJs(dirPath, data) {
-  let outputJsText = 'var lineDiffExample=window.atob("' + data + '");';
-  fs.writeFileSync(`${dirPath}/dest/diff.js`, outputJsText);
-}
