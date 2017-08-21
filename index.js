@@ -13,7 +13,7 @@ const
 
 // set program info
 program
-  .version('0.0.5')
+  .version('0.0.7')
   .usage('[options] [<commit>] [--] [<path>...]')
   .option('--cached', 'show diff of staging files')
   .parse(process.argv);
