@@ -30,7 +30,10 @@ const output = fs.createWriteStream(`${realPath}/dest/diff.js`)
 output.write('var lineDiffExample="');
 
 // git diff
-const giff = spawn('git', ['diff'].concat(program.args).concat(options));
+const giff = spawn('git', ['diff']
+               .concat(options)
+               .concat(['--'])
+               .concat(program.args));
 giff.stdout.on('data', function (data) {
   // encode to JSON to get escaping
   const encoded = JSON.stringify(data.toString());
