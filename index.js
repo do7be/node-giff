@@ -33,9 +33,9 @@ output.write('var lineDiffExample="');
 const giff = spawn(
   'git',
   ['diff']
-    .concat(program.args)
-    .concat(['--'])
     .concat(options)
+    .concat(['--'])
+    .concat(program.args)
 );
 
 giff.stdout.on('data', function (data) {
