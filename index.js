@@ -19,7 +19,7 @@ program
   .parse(process.argv);
 
 // judge options
-const options = ['--patience'];
+const options = ['--patience', '--no-index'];
 if (program.cached) {
   options.push('--cached');
 }
